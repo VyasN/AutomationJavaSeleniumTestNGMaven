@@ -1,0 +1,10 @@
+/target/
+.DS_STORE
+.git/*
+.settings
+target/*
+test-output/
+.metadata/*
+results/*
+.classpath
+.project
