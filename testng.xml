@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="3" name="Suite" parallel="classes">
-  <test thread-count="3" name="Test" parallel="classes">
-    <classes>
-      <class name="com.automationpractice.basicflow.TestBasicFlow"/>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+<suite name="javaSeleniumTestNGMaven" parallel="classes">
+	<!-- To run classes, methods or tests parallel -->
+	<!-- Increase thread count to spin up more browsers -->
+	<test name="regression" parallel="classes" thread-count="1">
+		<classes>
+			<class name="com.automationpractice.basicflow.TestBasicFlow" />
+
+		</classes>
+	</test>
+</suite>

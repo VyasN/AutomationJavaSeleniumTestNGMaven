@@ -57,6 +57,15 @@
 			<version>3.141.59</version>
 		</dependency>
 
+		<!-- To get Fake data -->
+		<!-- https://mvnrepository.com/artifact/com.devskiller/jfairy -->
+		<dependency>
+			<groupId>com.devskiller</groupId>
+			<artifactId>jfairy</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+
+
 
 		<!-- Selenium chrome driver plug in -->
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
@@ -81,12 +90,10 @@
 		<plugins>
 
 			<plugin>
-
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.0</version>
 				<configuration>
-					<compilerVersion>1.8</compilerVersion>
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>

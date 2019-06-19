@@ -1,5 +1,7 @@
 package com.automationpractice.pagefactory;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +29,27 @@ public class Products extends PageSetup {
 	@FindBy(xpath = "//a[@title='Printed Chiffon Dress']/..//span[.='Quick view']")
 	public WebElement buttonAjaxQuickView;
 
-	@FindBy(xpath = "//p[@id='add_to_cart']/button")
+	@FindBy(xpath = "//span[.='Add to cart']/parent::button")
 	public WebElement buttonAddToCart;
+
+	@FindBy(xpath = "//iframe[contains(@id,'fancybox-frame')]")
+	public WebElement iframeFancyBoxLayer;
+
+	@FindBy(id = "group_1")
+	public WebElement dropDownDressSize;
+
+	@FindBy(xpath = "//a[contains(.,'Proceed to checkout')]")
+	public WebElement linkProccedToCheckoutLayer;
+
+	@FindBy(xpath = "//span[contains(@class,'btn') and contains(.,'Continue shopping')]")
+	public List<WebElement> linkContinueShoppingLayer;
+
+	@FindBy(xpath = "//a[@title='View my shopping cart']")
+	public WebElement linkShoppingcartBlockHover;
+
+	@FindBy(xpath = "//span[contains(.,'Check out')]/parent::a[@id='button_order_cart']")
+	public WebElement buttonCheckOut;
+
+	@FindBy(xpath = "//p[@class='cart_navigation clearfix']/a[contains(.,'Proceed to checkout')]")
+	public WebElement buttonProceedToCheckout;
 }
