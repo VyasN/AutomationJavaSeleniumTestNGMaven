@@ -36,7 +36,7 @@ public class Accounts extends PageSetup {
 	@FindBy(id = "customer_firstname")
 	public WebElement textBoxFirstNamePersonalInfo;
 
-	@FindBy(id = "passwd")
+	@FindBy(xpath = "//input[@id='passwd']")
 	public WebElement textBoxPasswordPersonalInfo;
 
 	@FindBy(id = "firstname")
@@ -66,4 +66,6 @@ public class Accounts extends PageSetup {
 	@FindBy(id = "phone_mobile")
 	public WebElement textBoxMobileNumber;
 
+	@FindBy(xpath = "//button[@name='processAddress']")
+	public WebElement buttonProcessAddress;
 }
