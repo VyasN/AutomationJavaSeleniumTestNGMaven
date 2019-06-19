@@ -69,6 +69,12 @@ public class TestBasicFlow extends TestSetup implements fakerData {
 		accounts.mouseHover.moveToElement(accounts.btnRegister).click().build().perform();
 		accounts.waitTillElementIsClickable(accounts.buttonProcessAddress);
 		Assert.assertTrue(driver.getTitle().contains("Order - My Store"));
+		accounts.mouseHover.moveToElement(accounts.buttonProcessAddress).click().perform();
+		accounts.waitTillElementIsClickable(accounts.buttonProcessCarrier);
+		accounts.mouseHover.moveToElement(accounts.checkBoxTermsNService).click().perform();
+		accounts.mouseHover.moveToElement(accounts.buttonProcessCarrier).click().perform();
+		products.waitTillElementIsClickable(products.linkPayByBankWire);
+		Assert.assertEquals(products.titleProductOrderName.getText(), "Printed Chiffon Dress");
 	}
 
 	@BeforeClass

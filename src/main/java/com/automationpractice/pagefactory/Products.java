@@ -54,4 +54,10 @@ public class Products extends PageSetup {
 	@FindBy(xpath = "//p[@class='cart_navigation clearfix']/a[contains(.,'Proceed to checkout')]")
 	public WebElement buttonProceedToCheckout;
 
+	@FindBy(xpath = "//p[@class='product-name']/a")
+	public WebElement titleProductOrderName;
+
+	@FindBy(xpath = "//a[@class='bankwire']")
+	public WebElement linkPayByBankWire;
+
 }
