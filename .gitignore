@@ -7,3 +7,4 @@ test-output/
 results/*
 .classpath
 .project
+TestReport/*

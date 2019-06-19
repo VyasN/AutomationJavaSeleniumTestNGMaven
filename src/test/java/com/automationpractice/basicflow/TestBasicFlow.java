@@ -15,13 +15,13 @@ import com.automationpractice.pagefactory.fakerData;
 
 //Test cases 
 public class TestBasicFlow extends TestSetup implements fakerData {
+
 	@Test()
 	public void selectChiffonDress() throws InterruptedException {
 		products.waitTillElementIsVisible(products.headerTabHover);
 		products.mouseHover.moveToElement(products.headerTabHover).build().perform();
 		products.waitTillElementIsClickable(products.linkSummerDress);
 		products.linkSummerDress.click();
-		products.waitTillelementIsDisplayedOrEnabled(products.imageContainerChifforDressHover);
 		products.mouseHover.moveToElement(products.imageContainerChifforDressHover).build().perform();
 		products.buttonAjaxQuickView.click();
 		driver.switchTo().frame(products.iframeFancyBoxLayer);
@@ -32,10 +32,8 @@ public class TestBasicFlow extends TestSetup implements fakerData {
 		driver.switchTo().defaultContent();
 		products.waitTillElementIsVisible(products.linkContinueShoppingLayer.get(0));
 		products.mouseHover.moveToElement(products.linkContinueShoppingLayer.get(0)).clickAndHold().click();
-
 		products.waitTillElementIsVisible(products.linkShoppingcartBlockHover);
 		products.mouseHover.moveToElement(products.linkShoppingcartBlockHover).build().perform();
-
 		products.mouseHover.moveToElement(products.linkShoppingcartBlockHover).moveToElement(products.buttonCheckOut)
 				.click().perform();
 		products.waitTillElementIsClickable(products.buttonProceedToCheckout);
@@ -44,8 +42,19 @@ public class TestBasicFlow extends TestSetup implements fakerData {
 		accounts.textBoxEmailAddressCreateAccount.sendKeys(person.getEmail());
 		accounts.mouseHover.moveToElement(accounts.buttonCreateAnAccount).build().perform();
 		accounts.buttonCreateAnAccount.click();
-		accounts.
-
+		accounts.waitTillElementIsClickable(accounts.btnRegister);
+		accounts.textBoxFirstNamePersonalInfo.clear();
+		accounts.textBoxFirstNamePersonalInfo.sendKeys(person.getFirstName());
+		accounts.textBoxFirstNamePersonalInfo.sendKeys(person.getLastName());
+		accounts.textBoxPasswordPersonalInfo.sendKeys(person.getPassword());
+		accounts.textBoxFirstNameAddress.sendKeys(person.getFirstName());
+		accounts.textBoxLastNameAddress.sendKeys(person.getLastName());
+		accounts.textBoxAddress.sendKeys(person.getAddress().toString());
+		accounts.textBoxCity.sendKeys("NewYork");
+		accounts.selectDDOptionByValue(accounts.dropDownState, "32");
+		accounts.textBoxZipCode.sendKeys(person.getAddress().getPostalCode());
+		accounts.textBoxMobileNumber.sendKeys(person.getTelephoneNumber());
+		accounts.mouseHover.moveToElement(accounts.btnRegister).click().build().perform();
 	}
 
 	@BeforeClass

@@ -11,6 +11,9 @@ import com.devskiller.jfairy.producer.person.Person;
  * @author nartan.vyas
  *
  */
+
+//Just an example to show we can use interface to leverage signs of methods 
+
 public interface fakerData {
 	Fairy fairy = Fairy.create();
 	Person person = fairy.person();

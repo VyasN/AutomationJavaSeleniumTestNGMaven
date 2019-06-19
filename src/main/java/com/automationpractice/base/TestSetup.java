@@ -40,7 +40,6 @@ public class TestSetup {
 	public Credential credential;
 	public Products products;
 	public Accounts accounts;
-	
 
 	public String currentTime() {
 		return Long.toString(System.currentTimeMillis());
@@ -52,7 +51,7 @@ public class TestSetup {
 	public synchronized static WebDriver getDriver() {
 		return threadSafeDriver.get();
 	}
-	
+
 	/**
 	 * Creates a web driver that is thread safe check if grid is running on given
 	 * URL if not execute chrome driver

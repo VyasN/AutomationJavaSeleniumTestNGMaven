@@ -10,7 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.automationpractice.base.PageSetup;
 
-//Contains all the WebElemets for products
+//Contains all the WebElemets to select product and check out from cart
+
 public class Products extends PageSetup {
 	public Products(WebDriver driver, WebDriverWait wait) {
 		super(driver, wait);
@@ -52,4 +53,5 @@ public class Products extends PageSetup {
 
 	@FindBy(xpath = "//p[@class='cart_navigation clearfix']/a[contains(.,'Proceed to checkout')]")
 	public WebElement buttonProceedToCheckout;
+
 }

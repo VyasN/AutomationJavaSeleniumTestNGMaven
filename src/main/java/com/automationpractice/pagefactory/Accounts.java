@@ -22,6 +22,8 @@ public class Accounts extends PageSetup {
 		PageFactory.initElements(driver, this);
 	}
 
+//All Web Elements to create an account
+
 	@FindBy(id = "email_create")
 	public WebElement textBoxEmailAddressCreateAccount;
 
@@ -57,5 +59,11 @@ public class Accounts extends PageSetup {
 
 	@FindBy(xpath = "//button[contains(.,'Register')]")
 	public WebElement btnRegister;
+
+	@FindBy(xpath = "//select[@id='id_state']")
+	public WebElement dropDownState;
+
+	@FindBy(id = "phone_mobile")
+	public WebElement textBoxMobileNumber;
 
 }
