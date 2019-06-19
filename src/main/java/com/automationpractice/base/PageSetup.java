@@ -1,13 +1,16 @@
 /**
- * 
+ * @author nartan.vyas
  */
 package com.automationpractice.base;
+
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
@@ -63,6 +66,33 @@ public class PageSetup {
 				break;
 			}
 		}
-
 	}
+
+	/**
+	 * Check list of element size is greater than 1 if yes will not wait otherwise
+	 * wait for 500 milliseconds milliseconds, again it will check as above.
+	 * 
+	 * @param elements
+	 * @throws InterruptedException
+	 */
+	public void waitTillElementCountIsMoreThenOne(List<WebElement> elements) throws InterruptedException {
+		for (int i = 0; i < 5; i++) {
+			Thread.sleep(500);
+			if (elements.size() > 0) {
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Select options from drop down by value
+	 * 
+	 * @param element
+	 * @param i
+	 */
+	public void selectDDOptionByValue(WebElement element, String i) {
+		Select select = new Select(element);
+		select.selectByValue(i);
+	}
+
 }

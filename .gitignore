@@ -1,6 +1,5 @@
-/target/
+/target
 .DS_STORE
-.git/*
 .settings
 target/*
 test-output/
@@ -8,3 +7,4 @@ test-output/
 results/*
 .classpath
 .project
+TestReport/*

@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,9 +16,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-
+import com.automationpractice.pagefactory.Accounts;
+import com.automationpractice.pagefactory.Products;
+//import com.github.javafaker.Faker;
 import com.google.common.io.Files;
 
 /**
@@ -32,7 +30,7 @@ import com.google.common.io.Files;
 
 public class TestSetup {
 
-	private static ThreadLocal<WebDriver> threadSafeDriver = new ThreadLocal<WebDriver>();;
+	public static ThreadLocal<WebDriver> threadSafeDriver = new ThreadLocal<WebDriver>();;
 	public static String resultPath = Paths.get(System.getProperty("user.dir"), "results").toString();
 	// If you are using Virtual Machine please pass IP address of VM instead local
 	// host
@@ -40,6 +38,8 @@ public class TestSetup {
 	public WebDriver driver;
 	public WebDriverWait wait;
 	public Credential credential;
+	public Products products;
+	public Accounts accounts;
 
 	public String currentTime() {
 		return Long.toString(System.currentTimeMillis());
@@ -114,22 +114,6 @@ public class TestSetup {
 		}
 
 		return destFile.toString();
-	}
-
-	@BeforeClass
-	public void callDriver() {
-		driver = createDriver();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
-		wait = new WebDriverWait(driver, 30);
-		credential = new Credential(driver, wait);
-		driver.navigate().to(url);
-	}
-
-	@AfterClass(alwaysRun = true)
-	public void quitDriver() {
-		quitBrowser();
 	}
 
 }
