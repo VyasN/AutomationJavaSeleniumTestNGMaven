@@ -68,4 +68,10 @@ public class Accounts extends PageSetup {
 
 	@FindBy(xpath = "//button[@name='processAddress']")
 	public WebElement buttonProcessAddress;
+
+	@FindBy(xpath = "//input[@type='checkbox' and @name='cgv']")
+	public WebElement checkBoxTermsNService;
+
+	@FindBy(xpath = "//button[@name='processCarrier']")
+	public WebElement buttonProcessCarrier;
 }
