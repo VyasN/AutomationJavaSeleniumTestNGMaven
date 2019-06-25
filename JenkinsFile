@@ -1,0 +1,48 @@
+pipeline{
+	
+	agent any
+	
+	stages('Docker Image Build'){
+	post {
+        success {
+          slackSend(color: '#00FF00', message: "Successfully created docker image '${env.GIT_BRANCH}' (${env.BUILD_URL})")
+        }
+
+        failure {
+          slackSend(color: '#FF0000', message: "Failed in creating docker image '${env.GIT_BRANCH}' (${env.BUILD_URL})")
+        }
+      }
+      steps {
+        slackSend(color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME}' (${env.BUILD_URL})")
+        echo "Building docker image for $GIT_BRANCH"
+        script {
+          def inptext = "SCBRANCHAUTOMATION${GIT_BRANCH}BUILD${BUILD_ID}"
+          inptext = inptext.replaceAll("-", "")
+          inptext = inptext.replaceAll("\\.", "")
+          env.STACK = inptext
+        }
+        echo "Stack Name: $STACK"
+        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerrepo dockerhub', passwordVariable: 'DOCKERHUB_PASS', usernameVariable: 'DOCKERHUB_USER')]) {
+          sh "docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASS"
+          sh "docker build -t dockerrepo:$GIT_BRANCH ."
+          sh "docker push dockerrepo:$GIT_BRANCH"
+        }
+	}
+	
+	
+	stage('Automation Test') {
+      steps {
+        echo 'Running QA Automated Testing...'
+        withCredentials(bindings: [
+          usernamePassword(credentialsId: 'dockerrepo dockerhub', passwordVariable: 'DOCKERHUB_PASS', usernameVariable: 'DOCKERHUB_USER'){
+          script {
+              env.URL = sh "URL"    }
+
+          sh "docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASS"
+          sh "docker pull dockerrepo:$GIT_BRANCH"
+          echo "NODE_NAME = ${env.NODE_NAME}"
+          sh "docker run -t --rm -e GRID=true -e URL=${env.URL} dockerrepo:$GIT_BRANCH mvn clean install"
+        }
+          }
+
+}
