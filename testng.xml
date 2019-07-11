@@ -5,6 +5,7 @@
 		and run through Maven -->
 	<listeners>
 		<listener class-name="utills.TestListener" />
+		<listener class-name="utills.AnnotationTransformer" />
 	</listeners>
 	<!-- To run classes, methods or tests parallel -->
 	<!-- Increase thread count to spin up more browsers -->

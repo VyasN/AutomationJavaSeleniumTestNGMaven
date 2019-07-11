@@ -80,10 +80,10 @@ public class TestBasicFlow extends TestSetup implements fakerData {
 	@BeforeClass
 	public void callDriver() {
 		driver = createDriver();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
-		wait = new WebDriverWait(driver, 30);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+		wait = new WebDriverWait(driver, 10);
 		credential = new Credential(driver, wait);
 		products = new Products(driver, wait);
 		accounts = new Accounts(driver, wait);
